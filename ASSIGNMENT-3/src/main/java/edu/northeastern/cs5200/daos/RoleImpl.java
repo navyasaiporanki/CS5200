@@ -9,7 +9,7 @@ public class RoleImpl implements RoleDao {
 
 	private static RoleImpl instance;
 
-	public static RoleDao getInstance() {
+	public static RoleImpl getInstance() {
 
 		if (instance != null) {
 			return instance;
@@ -19,6 +19,8 @@ public class RoleImpl implements RoleDao {
 		return instance;
 
 	}
+	
+	PriviledgeImpl priviledgeInstance = PriviledgeImpl.getInstance();
 
 	@Override
 	public void assignWebsiteRole(int developerId, int websiteId, int roleId) {
@@ -38,24 +40,24 @@ public class RoleImpl implements RoleDao {
 			preparedStatement.executeUpdate();
 
 			if (roleName.equalsIgnoreCase("owner")) {
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "create");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "read");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "update");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "delete");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "create");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "update");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "delete");
 			} else if (roleName.equalsIgnoreCase("admin")) {
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "create");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "read");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "update");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "delete");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "create");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "update");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "delete");
 			} else if (roleName.equalsIgnoreCase("editor")) {
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "read");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "update");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "update");
 			} else if (roleName.equalsIgnoreCase("writer")) {
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "create");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "read");
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "update");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "create");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "update");
 			} else if (roleName.equalsIgnoreCase("reviewer")) {
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "read");
 
 			}
 
@@ -84,24 +86,24 @@ public class RoleImpl implements RoleDao {
 			preparedStatement.executeUpdate();
 
 			if (roleName.equalsIgnoreCase("owner")) {
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "create");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "read");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "update");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "delete");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "create");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "update");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "delete");
 			} else if (roleName.equalsIgnoreCase("admin")) {
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "create");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "read");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "update");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "delete");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "create");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "update");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "delete");
 			} else if (roleName.equalsIgnoreCase("writer")) {
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "create");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "read");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "update");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "create");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "update");
 			} else if (roleName.equalsIgnoreCase("editor")) {
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "create");
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "create");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "read");
 			} else if (roleName.equalsIgnoreCase("reviewer")) {
-				PriviledgeImpl.getInstance().assignPagePriviledge(developerId, pageId, "create");
+				priviledgeInstance.assignPagePriviledge(developerId, pageId, "create");
 			}
 
 		} catch (Exception ex) {
@@ -128,24 +130,24 @@ public class RoleImpl implements RoleDao {
 			preparedStatement.executeUpdate();
 
 			if (roleName.equalsIgnoreCase("owner")) {
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "create");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "read");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "update");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "delete");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "create");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "update");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "delete");
 			} else if (roleName.equalsIgnoreCase("admin")) {
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "create");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "read");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "update");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "delete");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "create");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "update");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "delete");
 			} else if (roleName.equalsIgnoreCase("editor")) {
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "read");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "update");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "update");
 			} else if (roleName.equalsIgnoreCase("writer")) {
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "create");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "read");
-				PriviledgeImpl.getInstance().deleteWebsitePriviledge(developerId, websiteId, "update");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "create");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.deleteWebsitePriviledge(developerId, websiteId, "update");
 			} else if (roleName.equalsIgnoreCase("reviewer")) {
-				PriviledgeImpl.getInstance().assignWebsitePriviledge(developerId, websiteId, "read");
+				priviledgeInstance.assignWebsitePriviledge(developerId, websiteId, "read");
 
 			}
 
@@ -173,24 +175,24 @@ public class RoleImpl implements RoleDao {
 			preparedStatement.executeUpdate();
 
 			if (roleName.equalsIgnoreCase("owner")) {
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "create");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "read");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "update");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "delete");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "create");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "update");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "delete");
 			} else if (roleName.equalsIgnoreCase("admin")) {
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "create");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "read");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "update");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "delete");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "create");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "update");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "delete");
 			} else if (roleName.equalsIgnoreCase("editor")) {
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "read");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "update");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "update");
 			} else if (roleName.equalsIgnoreCase("writer")) {
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "create");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "read");
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "update");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "create");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "update");
 			} else if (roleName.equalsIgnoreCase("reviewer")) {
-				PriviledgeImpl.getInstance().deletePagePriviledge(developerId, pageId, "read");
+				priviledgeInstance.deletePagePriviledge(developerId, pageId, "read");
 
 			}
 

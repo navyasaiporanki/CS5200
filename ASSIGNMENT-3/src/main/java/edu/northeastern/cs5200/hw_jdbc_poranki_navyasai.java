@@ -21,7 +21,6 @@ import edu.northeastern.cs5200.models.HeadingWidget;
 import edu.northeastern.cs5200.models.HtmlWidget;
 import edu.northeastern.cs5200.models.ImageWidget;
 import edu.northeastern.cs5200.models.Page;
-
 import edu.northeastern.cs5200.models.User;
 import edu.northeastern.cs5200.models.Website;
 import edu.northeastern.cs5200.models.Widget;
@@ -38,6 +37,7 @@ public class hw_jdbc_poranki_navyasai {
 		WebsiteImpl websiteInstance = WebsiteImpl.getInstance();
 		PageImpl pageInstance = PageImpl.getInstance();
 		WidgetImpl widgetInstance = WidgetImpl.getInstance();
+		RoleImpl roleInstance = RoleImpl.getInstance();
 
 		// 1
 		// a
@@ -92,6 +92,8 @@ public class hw_jdbc_poranki_navyasai {
 
 		addressInstance.insertAddress(34, "654 Frank St.", null, "Foulton", "MA", "04322", true);
 
+		
+		System.out.println("Inserting Websites");
 		// 2 Inserting values in to website
 		// a
 
@@ -146,7 +148,44 @@ public class hw_jdbc_poranki_navyasai {
 				new Date(Calendar.getInstance().getTime().getTime()), 4322345, charlie_userId3);
 
 		websiteInstance.createWebsiteForDeveloper(charlie_userId3, gizmodo);
+		
+		System.out.println("Website done");
+		System.out.println("Inserting website roles");
+		/* Inserting data for the website roles.*/
+		
+		int facebook_id = facebook.getId();
+		roleInstance.assignWebsiteRole(alice_userId, facebook_id, 1);
+		roleInstance.assignWebsiteRole(bob_userId2, facebook_id,4 );
+		roleInstance.assignWebsiteRole(charlie_userId3, facebook_id, 2);
+		System.out.println("A");
+		int twitter_id = twitter.getId();
+		roleInstance.assignWebsiteRole(bob_userId2, twitter_id, 1);
+		roleInstance.assignWebsiteRole(charlie_userId3, twitter_id,4 );
+		roleInstance.assignWebsiteRole(alice_userId, twitter_id, 2);
+		System.out.println("B");
+		int wikipedia_id = wikipedia.getId();
+		roleInstance.assignWebsiteRole(charlie_userId3, wikipedia_id, 1);
+		roleInstance.assignWebsiteRole(alice_userId, wikipedia_id,4 );
+		roleInstance.assignWebsiteRole(bob_userId2, wikipedia_id, 2);
+		System.out.println("C");
+		int cnn_id = cnn.getId();
+		roleInstance.assignWebsiteRole(alice_userId, cnn_id, 1);
+		roleInstance.assignWebsiteRole(bob_userId2, cnn_id,4 );
+		roleInstance.assignWebsiteRole(charlie_userId3, cnn_id, 2);
+		System.out.println("D");
+		int cnet_id = cnet.getId();
+		roleInstance.assignWebsiteRole(bob_userId2, cnet_id, 1);
+		roleInstance.assignWebsiteRole(charlie_userId3, cnet_id,4 );
+		roleInstance.assignWebsiteRole(alice_userId, cnet_id, 2);
+		System.out.println("E");
+		int gizmodo_id = gizmodo.getId();
+		roleInstance.assignWebsiteRole(charlie_userId3, gizmodo_id, 1);
+		roleInstance.assignWebsiteRole(alice_userId, gizmodo_id,4 );
+		roleInstance.assignWebsiteRole(bob_userId2, gizmodo_id, 2);
+		System.out.println("F");
 
+		System.out.println("done website roles.");
+		System.out.println("Inserting pages");
 		// 3 Inserting into pages
 
 		Date dateCreated = Date.valueOf("2019-09-04");
@@ -181,7 +220,47 @@ public class hw_jdbc_poranki_navyasai {
 
 		pageInstance.createPageForWebsite(cnet.getId(), profile);
 
-		// 4 Updating the widgets
+	
+		
+		
+		/*Inserting values in to the page role table*/
+		
+		int home_id = home.getId();
+		
+		roleInstance.assignPageRole(alice_userId, home_id, 4);
+		roleInstance.assignPageRole(bob_userId2, home_id, 5);
+		roleInstance.assignPageRole(charlie_userId3, home_id,3 );
+		
+		int about_id = about.getId();
+		
+		roleInstance.assignPageRole(bob_userId2, about_id, 4);
+		roleInstance.assignPageRole(charlie_userId3, about_id, 5);
+		roleInstance.assignPageRole(alice_userId, about_id,3 );
+	
+		int contact_id = contact.getId();
+		
+		roleInstance.assignPageRole(charlie_userId3, contact_id, 4);
+		roleInstance.assignPageRole(alice_userId, contact_id, 5);
+		roleInstance.assignPageRole(bob_userId2, contact_id,3 );
+		
+		
+		
+		int preferences_id = preferences.getId();
+		
+		roleInstance.assignPageRole(alice_userId, preferences_id, 4);
+		roleInstance.assignPageRole(bob_userId2, preferences_id, 5);
+		roleInstance.assignPageRole(charlie_userId3, preferences_id,3 );
+		
+		int profile_id = profile.getId();
+		
+		roleInstance.assignPageRole(bob_userId2, profile_id, 4);
+		roleInstance.assignPageRole(charlie_userId3, profile_id, 5);
+		roleInstance.assignPageRole(alice_userId, profile_id,3 );
+		
+		
+		
+		
+		// 4 Inserting in to the widgets
 
 		// a
 
@@ -271,11 +350,11 @@ public class hw_jdbc_poranki_navyasai {
 
 				int page_Id_Update = page.getId();
 
-				RoleImpl.getInstance().deletePageRole(userIdAlice, page_Id_Update, 4);
-				RoleImpl.getInstance().deletePageRole(userIdCharlie, page_Id_Update, 3);
+				roleInstance.deletePageRole(userIdAlice, page_Id_Update, 4);
+				roleInstance.deletePageRole(userIdCharlie, page_Id_Update, 3);
 
-				RoleImpl.getInstance().assignPageRole(userIdCharlie, page_Id_Update, 4);
-				RoleImpl.getInstance().assignPageRole(userIdAlice, page_Id_Update, 3);
+				roleInstance.assignPageRole(userIdCharlie, page_Id_Update, 4);
+				roleInstance.assignPageRole(userIdAlice, page_Id_Update, 3);
 			}
 
 		}

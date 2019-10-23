@@ -6,9 +6,9 @@ import edu.northeastern.cs5200.Connection;
 
 public class PriviledgeImpl implements PriviledgeDao {
 
-	private static PriviledgeDao instance;
+	private static PriviledgeImpl instance;
 
-	public static PriviledgeDao getInstance() {
+	public static PriviledgeImpl getInstance() {
 
 		if (instance != null) {
 			return instance;
